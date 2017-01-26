@@ -1,6 +1,4 @@
-import { RECIPE_ROUTES } from './recipes/recipes.routes';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { RecipesComponent } from './recipes/recipes.component';
+import { HomeComponent } from './home.component';
 import { Routes, RouterModule } from "@angular/router";
 
 //i can't explain why in the previous project this was not necessary, and here i get a cli error
@@ -9,17 +7,15 @@ import { ModuleWithProviders } from '@angular/core';
 const APP_ROUTES: Routes = [
     {
         path: '',
-        redirectTo: '/recipes',
-        pathMatch: 'full'
+        component : HomeComponent
     },
     {
         path: 'recipes',
-        component: RecipesComponent,
-        children: RECIPE_ROUTES
+        loadChildren: 'app/recipes/recipes.module#RecipesModule'
     },
     {
         path: 'shopping-list',
-        component: ShoppingListComponent
+        loadChildren: 'app/shopping-list/shopping-list.module#ShoppingListModule'
     }
 ];
 
